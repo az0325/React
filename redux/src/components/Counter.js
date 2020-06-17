@@ -30,7 +30,7 @@ Counter.propTypes = {
     onSetColor: PropTypes.func,
 }
 
-// props 기본값 설정
+// props 기본값 설정 (값이 없을 경우)
 Counter.defaultProps = {
     number: 0,
     color: 'black',
