@@ -1,3 +1,4 @@
+/*
 import * as types from '../actions/ActionTypes'
 
 // reducer 초기값
@@ -34,3 +35,16 @@ const counter = (state = initialState, action) => {
 }
 
 export default counter;
+*/
+
+import number from './numbers'
+import color from './colors'
+
+import { combineReducers } from 'redux';
+
+const reducers = combineReducers({
+    numberData: number,
+    colorData: color
+})
+
+export default reducers;
