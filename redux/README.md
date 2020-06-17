@@ -1,68 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Store
+- 상태 값들을 내장
+- ex) dataState 등 Root에 선언한 state들의 값들
+#
 
-## Available Scripts
+#### Reducer
+- 상태를 변화시키는 로직들
+- ex) 계산식 (calculateDataState)
+#
 
-In the project directory, you can run:
+#### Dispatch
+- store 내장함수
+- 액션을 발생시키는 함수
+#
 
-### `yarn start`
+#### Action (Object )
+- Store에 있는 state를 변경
+#
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Provider
+- 스토어 연동 
+```JavaScript
+// 아래 친구들은 세트라고 생각하는게 쉬움!
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+// Redux 관련 불러오기
+import { createStore } from 'redux';
+import reducers from './reducers';
+import { Provider } from 'react-redux';
 
-### `yarn test`
+// Store 생성
+const store = createStore(reducers);
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+#
 
-### `yarn build`
+#### Connet (Function)
+- Component를 Store에 연동
+```JavaScript
+import { connect } from 'react-redux';
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- params
+1. mapStateToProps - store에 있는 state값을 받아서 component props로 반환
+2. mapDisPatchToProps - dispatch를 받아서 
+3. mergeProps - state와 dispatch 동시에 필요한 함수를 props로 전달
+```JavaScript
+// 여기서 짚고 넘어가야 할 것!
+// 객체 형태로 return을 하고 싶을 때
+const test = () => { return { value : 'a' } }
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+// {} 를 쓰면 암시적으로 return이 생략 가능하다
+// 그럼 저 위에 상황에서는 어떻게 해야할까 -> () 사용을 해서 명시해주기
+const test = () => ({ value : 'a' })
+```
