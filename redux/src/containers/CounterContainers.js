@@ -28,23 +28,29 @@ export function getRandomColor() {
 }
 
 // store 안의 state 값을 props로 연결
-const mapStateToProps = (state) => ({
-    // color: state.color,
-    // number: state.number,
-    color: state.colorData.color,
-    number: state.numberData.number
-})
+const mapStateToProps = (state) => {
+    console.log("Counter Containers : mapState")
+    return ({
+        // color: state.color,
+        // number: state.number,
+        color: state.colorData.color,
+        number: state.numberData.number
+    })
+}
 
 // 액션 생성 -> 액션을 dispatch하는 함수 생성
 // store에 있는 state를 변경하기 위함
-const mapDispatchToProps = (dispatch) => ({
-    onIncrement: () => dispatch(actions.increment()),
-    onDecrement: () => dispatch(actions.decrement()),
-    onSetColor: () => {
-        const color = getRandomColor();
-        dispatch(actions.setColor(color));
-    }
-})
+const mapDispatchToProps = (dispatch) => {
+    console.log("Counter Containers : mapDispatch")
+    return ({
+        onIncrement: () => dispatch(actions.increment()),
+        onDecrement: () => dispatch(actions.decrement()),
+        onSetColor: () => {
+            const color = getRandomColor();
+            dispatch(actions.setColor(color));
+        }
+    })
+}
 
 const CounterContainer = connect(
     mapStateToProps,

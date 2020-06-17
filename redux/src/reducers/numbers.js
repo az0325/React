@@ -5,6 +5,7 @@ const initialState = {
 }
 
 const number = (state = initialState, action) => {
+    console.log("reducers : numbers")
     switch (action.type) {
         case types.INCREMENT:
             return {
