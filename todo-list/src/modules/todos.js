@@ -35,7 +35,8 @@ let reducer = handleActions({
     },
 
     [TOGGLE]: (state, action) => {
-        const { id } = action.payload
+        // const id = action.payload
+        const { payload: id } = action;
 
         // 전달 받은 id를 가지고 index 조회
         const index = state.findIndex(todo => todo.get('id') === id)
@@ -46,7 +47,8 @@ let reducer = handleActions({
     },
 
     [REMOVE]: (state, action) => {
-        const { id } = action.payload
+        // const id = action.payload
+        const { payload: id } = action;
 
         const index = state.findIndex(todo => todo.get('id') === id)
         return state.delete(index)

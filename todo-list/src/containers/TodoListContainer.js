@@ -16,7 +16,6 @@ const TodoListContainer = ({ TodosActions, todos }) => {
         TodosActions.remove(id)
     }
 
-
     return (
         <TodoList
             todos={todos}

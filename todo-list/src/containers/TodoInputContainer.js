@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import TodoInput from '../components/TodoInput';
 
 import { connect } from 'react-redux'
@@ -9,10 +9,10 @@ import * as inputActions from '../modules/input';
 import * as todosActions from '../modules/todos';
 
 const TodoInputContainer = ({ InputActions, TodosActions, value }) => {
-    let id = 1;
+    const nextId = useRef(1)
 
     const getId = () => {
-        return ++id
+        return ++nextId.current
     }
 
     const handleChange = (e) => {

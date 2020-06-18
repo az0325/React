@@ -1,3 +1,4 @@
+## Redux +a
 #### createAction
 - 액션을 좀 더 편하게 자동화하는 방법
 ```JavaScript
@@ -108,3 +109,18 @@ InputActions: bindActionCreators(inputActions, dispatch)
 ```
 #
 
+## 함수형 Component
+
+#### useRef
+1. DOM에 접근하는 방법
+- Ex) focus 처리
+2. 함수형에서 쓰는 지역 변수 사용을 위해 사용
+```JavaScript
+const nextId = useRef(1);
+
+// 괄호 안에 있는 파라미터 값이 기본값이 됨 (.current 사용)
+// 수정하고 조회할 때도 .current 사용
+const getId = () => {
+  return ++nextId.current
+}
+```
