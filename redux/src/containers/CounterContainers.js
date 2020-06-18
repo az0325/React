@@ -29,7 +29,7 @@ export function getRandomColor() {
 
 // store 안의 state 값을 props로 연결
 const mapStateToProps = (state) => {
-    console.log("Counter Containers : mapState")
+    console.log("Counter Containers : mapState - ", state)
     return ({
         // color: state.color,
         // number: state.number,
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => {
 // 액션 생성 -> 액션을 dispatch하는 함수 생성
 // store에 있는 state를 변경하기 위함
 const mapDispatchToProps = (dispatch) => {
-    console.log("Counter Containers : mapDispatch")
+    console.log("Counter Containers : mapDispatch - ", dispatch)
     return ({
         onIncrement: () => dispatch(actions.increment()),
         onDecrement: () => dispatch(actions.decrement()),

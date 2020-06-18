@@ -2,23 +2,56 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Counter.css'
 
-class Counter extends Component {
+// class Counter extends Component {
 
-    render() {
-        let { onIncrement, onDecrement, onSetColor, color, number } = this.props;
-        return (
-            <div className="Counter"
-                onClick={onIncrement}
-                onContextMenu={(e) => {
-                    e.preventDefault();
-                    onDecrement();
-                }}
-                onDoubleClick={onSetColor}
-                style={{ backgroundColor: color }}
-            > {number}
-            </div>
-        )
-    }
+//     render() {
+//         let { onIncrement, onDecrement, onSetColor, color, number } = this.props;
+
+//         return (
+//             <div className="Counter"
+//                 onClick={onIncrement}
+//                 onContextMenu={(e) => {
+//                     e.preventDefault();
+//                     onDecrement();
+//                 }}
+//                 onDoubleClick={onSetColor}
+//                 style={{ backgroundColor: color }}
+//             > {number}
+//             </div>
+//         )
+//     }
+// }
+
+// // 함수형으로 변경
+// function Counter(props) {
+//     return (
+//         <div className="Counter"
+//             onClick={props.onIncrement}
+//             onContextMenu={(e) => {
+//                 e.preventDefault();
+//                 props.onDecrement();
+//             }}
+//             onDoubleClick={props.onSetColor}
+//             style={{ backgroundColor: props.color }}
+//         > {props.number}
+//         </div>
+//     )
+// }
+
+// 화살표 함수 + 비구조화 할당
+const Counter = ({ onIncrement, onDecrement, onSetColor, color, number }) => {
+    return (
+        <div className="Counter"
+            onClick={onIncrement}
+            onContextMenu={(e) => {
+                e.preventDefault();
+                onDecrement();
+            }}
+            onDoubleClick={onSetColor}
+            style={{ backgroundColor: color }}
+        > {number}
+        </div>
+    )
 }
 
 // props 타입 확인

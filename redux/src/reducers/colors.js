@@ -5,12 +5,12 @@ const initialState = {
 }
 
 const color = (state = initialState, action) => {
-    console.log("reducers : colors")
+    console.log("reducers : colors - ", state)
     switch (action.type) {
         case types.SET_COLOR:
             return {
                 ...state,
-                number: action.color
+                color: action.color
             }
         default:
             return state;

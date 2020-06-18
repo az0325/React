@@ -1,3 +1,9 @@
+## Redux
+1. 사용 이유
+- 상태 관리 로직을 컴포넌트 외에서 처리
+- 단방향으로 데이터 변경 - 양방향으로 데이터로 주고받을 경우, 복잡해지고 어떤 변화가 일어날지 예측 할 수 없음
+#
+
 #### Store
 - 상태 값들을 내장
 - ex) dataState 등 Root에 선언한 state들의 값들
@@ -13,8 +19,9 @@
 - 액션을 발생시키는 함수
 #
 
-#### Action (Object )
+#### Action (Object)
 - Store에 있는 state를 변경
+- 동작이 아니라 값이라고 생각하면 쉬움!
 #
 
 #### Provider
@@ -58,3 +65,10 @@ const test = () => { return { value : 'a' } }
 // 그럼 저 위에 상황에서는 어떻게 해야할까 -> () 사용을 해서 명시해주기
 const test = () => ({ value : 'a' })
 ```
+#
+
+#### 순서
+1. Components (View) : 이벤트 발생
+2. Dispatch & Action : Dispatch가 객체(Action)을 Reducer에 전달
+3. Reducer & Store : 받은 객체(Action - types)을 토대로 Reducer에서 로직 실행 후 변경된 값을 Store에 저장
+4. Store : Store에 저장(변경)된 값을 View에 뿌려줌 (connect)
