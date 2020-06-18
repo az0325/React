@@ -58,15 +58,53 @@ const number = (state = initialState, action) => {
 import { handleActions } from 'redux-actions';
 
 const number = handleActions({
-  [INCREMENT] : (state, action) => ({
+  INCREMENT : (state, action) => ({
     number: state.number + 1
   }),
 
-  [DECREMENT] : (state, action) => ({
+  DECREMENT : (state, action) => ({
     number: state.number - 1
   })
 }, { number : 0 })
 
+
+// export 바로 하기
+export default handleActions({
+  INCREMENT : (state, action) => ({
+    number: state.number + 1
+  }),
+
+  DECREMENT : (state, action) => ({
+    number: state.number - 1
+  })
+}, { number : 0 })
+```
+
+- 액션 타입 정의 힐 때 handleActions 선언하는 방법
+```JavaScript
+// 변수명과 액션명이 같을 때
+const INSERT = 'INSERT'
+let reducer = handleActions({
+    INSERT : (state, action) => { }
+})
+
+// 변수명과 액션명이 다를 때
+const INSERT = 'todos/INSERT'
+let reducer = handleActions({
+    [INSERT] : (state, action) => { }
+})
+```
+#
+
+#### bindActionCreators
+- 액션 생성 함수들을 연결시켜주는 내장 함수
+- 액션 생성 함수들을 여러개 설정 가능
+- 파라미터 2개를 가짐
+1. 액션 생성 함수들이 들어있는 객체
+2. dispatch
+```JavaScript
+// 형태
+InputActions: bindActionCreators(inputActions, dispatch)
 ```
 #
 
