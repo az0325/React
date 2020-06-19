@@ -54,4 +54,42 @@ useEffect(() => {
 ```
 <br/>
 
-3. 업데이트 되기 직전에 실행
+3. 언마운트 되기전이나, 업데이트 되기 직전에 실행
+- 메무리 누수가 발생하지 않도록 정리(clean-up)
+- 정확한 시점은 컴포넌트 마운트가 해제되는 때
+#
+
+#### useContext
+- Context를 보다 쉽게 사용
+#
+
+#### useReducer
+- useState 대체 함수
+- 불변성을 지키면서 업데이트한 새로운 상태를 반환
+```JavaScript
+// 기본 형태
+function reducer(state, action) {
+  return { ... };
+}
+
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'INCREMENT':
+            return { value: state.value + 1 }
+
+        case 'DECREMENT':
+            return { value: state.value - 1 }
+
+        default:
+            return state;
+    }
+}
+
+// state : 현재 가르키고 있는 상태
+// dispatch : 액션을 발생시키는 함수 => dispatch(action)
+const [state, dispatch] = useReducer(reducer, { value: 0 })
+```
+
+#
+https://ko.reactjs.org/docs/hooks-reference.html#usereducer
