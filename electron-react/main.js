@@ -17,7 +17,9 @@ const createWindow = () => {
     })
 
     // 지정한 디렉터리의 index.html을 로드합니다.
-    win.loadFile(path.join(__dirname, 'public/index.html'));
+    // win.loadFile(path.join(__dirname, 'public/index.html'));
+    // win.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, 'public/index.html')}`)
+    win.loadURL('http://localhost:3000')
     win.webContents.openDevTools() // 개발자 도구 열기
 
     // 창이 닫기면 호출
