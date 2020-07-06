@@ -19,3 +19,12 @@ app.on('[event]' => {
     // 동작
 })
 ```
+#
+#### 적용한 친구들
+- BrowserWindow
+- Router (url 이동)
+- shell
+
+#### 적용해볼 친구들
+- BrowserView (수정)
+- remote (getCurrentWindow) - 창 열고 닫기
