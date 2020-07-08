@@ -9,9 +9,14 @@ class Navigation extends Component {
         history.push(`/${tabName}`)
 
         if (tabName === "link") {
-            window.shell.openExternal("https://www.naver.com/")
+            // window.shell.openExternal("https://www.naver.com/")
+            window.ipcRenderer.send("link")
+            // window.open("https://www.naver.com/")
         } else {
-            window.ipcRenderer.send("dialog", tabName === "dialog" ? true : false)
+            window.ipcRenderer.send("dialog", {
+                status: tabName === "dialog" ? true : false,
+                name: tabName
+            })
         }
     }
 

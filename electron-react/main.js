@@ -1,6 +1,7 @@
-const { app, BrowserWindow, ipcMain, BrowserView } = require("electron")
+const { app, BrowserWindow, ipcMain, BrowserView, shell, net } = require("electron")
 const path = require("path");
-const { Console } = require("console");
+const { session } = require('electron')
+
 
 let win;
 let view;
@@ -35,7 +36,9 @@ const createWindow = () => {
 }
 
 // 초기화를 끝냈을 때 발생하는 이벤트
-app.on('ready', createWindow)
+app.on('ready', () => {
+    createWindow()
+})
 
 // 모든 윈도우가 종료되었을 때 발생하는 이벤트
 app.on('window-all-closed', () => {
@@ -53,7 +56,14 @@ ipcMain.on('dialog', (e, data) => {
     createDialog(data, { x: 50, y: 70, width: 800, height: 800 })
 })
 
-const createDialog = (status, param) => {
+ipcMain.on("link", () => {
+    let newWin = new BrowserWindow({ width: 800, height: 1000 })
+    newWin.on('close', function () { win = null })
+    newWin.loadURL("https://dev.wehagot.com")
+    newWin.show()
+})
+
+const createDialog = (data, param) => {
     view = new BrowserView({
         webPreferences: {
             // 2.
@@ -65,7 +75,7 @@ const createDialog = (status, param) => {
         }
     })
 
-    if (status) {
+    if (data.status) {
         win.setBrowserView(view)
         view.setBounds(param)
         // view.webContents.loadURL('http://localhost:3000/dialog')

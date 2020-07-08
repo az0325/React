@@ -6,7 +6,6 @@ import Header from './components/Header/Header'
 import { Route, Router } from "react-router"
 import history from "./history"
 import Starbucks from './components/Starbucks/Starbucks'
-import AlertDialog from './components/Dialog/AlertDialog'
 // import reducers from './reducers'
 
 // redux
@@ -22,7 +21,6 @@ ReactDOM.render(
     <Route path='/' component={Header} />
     <Route path="/home" component={Home} />
     <Route path="/starbucks" component={Starbucks} />
-    <Route path="/dialog" component={AlertDialog} />
   </Router >
   // </Provider>
   , document.getElementById('index')
